@@ -11,3 +11,10 @@ AppBar mainAppBar({
     centerTitle: centre,
   );
 }
+
+AppBar hiddenAppBar() {
+  return AppBar(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+  );
+}

@@ -1,5 +1,11 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+// ignore_for_file: prefer_const_constructors
+
+import 'package:blog_app_flutter/pages/signup.dart';
+import 'package:blog_app_flutter/utils/colors.dart';
+import 'package:blog_app_flutter/widgets/app_bars.dart';
+import 'package:blog_app_flutter/widgets/buttons.dart';
+import 'package:blog_app_flutter/widgets/text_fields.dart';
+import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -9,8 +15,120 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: hiddenAppBar(),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.fromLTRB(
+            20, MediaQuery.of(context).size.height * 0.05, 20, 0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset('assets/images/person.png'),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              Text(
+                'Identify Yourself',
+                style: TextStyle(
+                  fontSize: 30,
+                  color: accentColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 20),
+              textField1(
+                emailController,
+                'Email',
+                TextInputType.emailAddress,
+                false,
+              ),
+              SizedBox(height: 20),
+              textField1(
+                passwordController,
+                'Password',
+                TextInputType.visiblePassword,
+                true,
+              ),
+              SizedBox(height: 20),
+              mainButton('Sign In', context),
+              SizedBox(height: 20),
+              signUpOption(),
+              SizedBox(height: 20),
+              forgotPasswordOption(),
+            ],
+          ),
+        ),
+      ),
+    );
+    ;
+  }
+
+  Row signUpOption() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Don't have an account?",
+          style: TextStyle(
+            fontSize: 15,
+          ),
+        ),
+        const SizedBox(
+          width: 2,
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.popUntil(context, (route) => route.isFirst);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SignUpPage(),
+              ),
+            );
+          },
+          child: const Text(
+            "Sign Up",
+            style: TextStyle(
+              color: accentColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row forgotPasswordOption() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Forgot Password?",
+          style: TextStyle(
+            fontSize: 15,
+          ),
+        ),
+        const SizedBox(
+          width: 2,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: const Text(
+            "Click Here",
+            style: TextStyle(
+              color: accentColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

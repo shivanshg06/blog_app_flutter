@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
-import 'package:blog_app_flutter/pages/home.dart';
-import 'package:blog_app_flutter/pages/signup.dart';
+import 'package:blog_app_flutter/pages/signin.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
@@ -56,7 +55,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const SignUpPage(),
+              builder: (context) => const SignInPage(),
             ),
           );
         },
