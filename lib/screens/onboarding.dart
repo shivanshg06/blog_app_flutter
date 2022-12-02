@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:blog_app_flutter/pages/home.dart';
+import 'package:blog_app_flutter/pages/signup.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
@@ -55,7 +56,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const HomePage(),
+              builder: (context) => const SignUpPage(),
             ),
           );
         },
@@ -125,11 +126,15 @@ PageModel pageStyles(BuildContext context, String title, String img) {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.2),
-              Image.asset(
-                img,
-                fit: BoxFit.cover,
+              Center(
+                child: Image.asset(
+                  img,
+                  fit: BoxFit.cover,
+                  height: MediaQuery.of(context).size.height * 0.35,
+                ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.2),
               Text(
@@ -149,7 +154,7 @@ PageModel pageStyles(BuildContext context, String title, String img) {
 }
 
 List<String> onboardingTitles = [
-  'Regain Control',
-  'What does your phone show you?',
-  'How Do We Do It?',
+  'Regain Control,',
+  'Of What Internet Shows You!',
+  'See What You Want To.',
 ];
