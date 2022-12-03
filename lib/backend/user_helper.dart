@@ -61,6 +61,4 @@ class UserHelper {
     var data = jsonDecode(response.body);
     return data;
   }
-
-  
 }
