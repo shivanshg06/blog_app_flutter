@@ -52,4 +52,13 @@ class UserHelper {
       return e;
     }
   }
+
+  Future getId(String userToken) async {
+    var response = await http.get(Uri.parse('${baseUrl}userId'), headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $userToken'
+    });
+    var data = jsonDecode(response.body);
+    return data;
+  }
 }

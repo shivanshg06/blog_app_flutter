@@ -18,7 +18,9 @@ class _BlogTileState extends State<BlogTile> {
           widget.blog['title'].toString(),
         ),
         subtitle: Text(
-          widget.blog['content'].toString().substring(0, 20),
+          widget.blog['content'].toString().length > 20
+              ? widget.blog['content'].toString().substring(0, 20)
+              : widget.blog['content'].toString(),
         ),
         leading: Image.asset(
           'assets/icons/heart-fun.png',

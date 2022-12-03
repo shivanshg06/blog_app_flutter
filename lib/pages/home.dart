@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:blog_app_flutter/backend/blog_helper.dart';
 import 'package:blog_app_flutter/pages/blogs/add.dart';
-import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/blog_index_tile.dart';
 import 'package:blog_app_flutter/widgets/progress_indicator.dart';
@@ -20,8 +19,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBar(
-          title: 'Shiv\'s Blogs', leadingF: menuFunction, main: true),
+      appBar:
+          mainAppBar(title: 'Latest Blogs', leadingF: menuFunction, main: true),
       body: FutureBuilder(
         future: _blogHelper.index(),
         builder: (context, snapshot) {
@@ -30,7 +29,8 @@ class _HomePageState extends State<HomePage> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                return BlogTile(blog: snapshot.data![index]);
+                return BlogTile(
+                    blog: snapshot.data![snapshot.data!.length - 1 - index]);
               },
             );
           }
