@@ -1,16 +1,13 @@
-# blog_app_flutter
+# ReLive
 
-A new Flutter project.
+This is the flutter repository for ReLive Social Media Project
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+You'll need the backend to get this project to function. Without it you'll only be able to see the onboarding screen. 
 
-A few resources to get you started if this is your first Flutter project:
+## Setting Up the Database
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Github Link: https://github.com/shivanshg06/blog_app_laravel
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Clone the above repositiory, and follow the steps in the README to setup the database.
