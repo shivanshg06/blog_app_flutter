@@ -24,7 +24,7 @@ class BlogHelper {
     try {
       var response = await http.get(Uri.parse('$baseUrl$id/'));
       if (response.statusCode == 200) {
-        log(response.body);
+        // log(response.body);
         return jsonDecode(response.body);
       }
       return Future.error('Server Error');
@@ -35,21 +35,23 @@ class BlogHelper {
   }
 
   Future store(String title, String content, String userToken) async {
-    String slug = title.toLowerCase().replaceAll(' ', '-');
+    String slug = title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '');
     try {
       var idData = await _userHelper.getId(userToken);
       String id = idData['id'].toString();
-      var response = await http.post(Uri.parse(baseUrl),
-          headers: ({
-            'Accept': 'application/json',
-            'Authorization': 'Bearer $userToken',
-          }),
-          body: {
-            "title": title,
-            'slug': slug,
-            "content": content,
-            'user_id': id,
-          });
+      var response = await http.post(
+        Uri.parse(baseUrl),
+        headers: ({
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $userToken',
+        }),
+        body: {
+          "title": title,
+          'slug': slug,
+          "content": content,
+          'user_id': id,
+        },
+      );
       var data = jsonDecode(response.body);
       if (response.statusCode == 201) {
         return data;
@@ -60,10 +62,18 @@ class BlogHelper {
     }
   }
 
-  void destroy(var id) {
+  void destroy(var id, String userToken) async {
     try {
-      http.delete(Uri.parse('$baseUrl$id/delete/'));
-      log('Delete Successful');
+      var response = await http.delete(
+        Uri.parse('$baseUrl$id'),
+        headers: ({
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $userToken',
+        }),
+      );
+      if (response.statusCode == 1) {
+        log('Deleted Success');
+      }
     } catch (e) {
       log('$e');
     }

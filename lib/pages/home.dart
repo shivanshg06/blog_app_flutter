@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:developer';
 
 import 'package:blog_app_flutter/backend/blog_helper.dart';
@@ -30,7 +32,9 @@ class _HomePageState extends State<HomePage> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 return BlogTile(
-                    blog: snapshot.data![snapshot.data!.length - 1 - index]);
+                  blog: snapshot.data![snapshot.data!.length - 1 - index],
+                  userToken: widget.userToken,
+                );
               },
             );
           }
