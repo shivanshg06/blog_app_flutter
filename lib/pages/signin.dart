@@ -1,5 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_field, use_build_context_synchronously
 
+import 'dart:developer';
+
+import 'package:blog_app_flutter/backend/user_helper.dart';
+import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/pages/signup.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
@@ -17,6 +21,8 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final UserHelper _userHelper = UserHelper();
+  String _userToken = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +61,7 @@ class _SignInPageState extends State<SignInPage> {
                 true,
               ),
               SizedBox(height: 20),
-              mainButton('Sign In', context),
+              mainButton('Sign In', context, signIn),
               SizedBox(height: 20),
               signUpOption(),
               SizedBox(height: 20),
@@ -65,7 +71,24 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
-    ;
+  }
+
+  void signIn() async {
+    String email = emailController.text;
+    String password = passwordController.text;
+
+    var userToken = await _userHelper.signin(email, password);
+    log(_userToken);
+    _userToken = userToken;
+    Navigator.popUntil(context, (route) => route.isFirst);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: ((context) => HomePage(
+              userToken: _userToken,
+            )),
+      ),
+    );
   }
 
   Row signUpOption() {

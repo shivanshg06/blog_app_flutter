@@ -1,5 +1,9 @@
-// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors
+// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, use_build_context_synchronously
 
+import 'dart:developer';
+
+import 'package:blog_app_flutter/backend/user_helper.dart';
+import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/pages/signin.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
@@ -19,6 +23,8 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  final UserHelper _userHelper = UserHelper();
+  String _userToken = '';
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               SizedBox(height: 20),
               textField1(
-                emailController,
+                nameController,
                 'Name',
                 TextInputType.name,
                 false,
@@ -66,18 +72,40 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               SizedBox(height: 20),
               textField1(
-                passwordController,
+                confirmPasswordController,
                 'Confirm Password',
                 TextInputType.visiblePassword,
                 true,
               ),
               SizedBox(height: 20),
-              mainButton('Sign Up', context),
+              mainButton('Sign Up', context, signUp),
               SizedBox(height: 20),
               signInOption(),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<void> signUp() async {
+    String name = nameController.text;
+    String email = emailController.text;
+    String password = passwordController.text;
+    String confirmPassword = confirmPasswordController.text;
+    if (password != confirmPassword) {
+      log('Passwords Are Not Same');
+      return;
+    }
+    var userToken = await _userHelper.register(name, email, password);
+    _userToken = userToken;
+    Navigator.popUntil(context, (route) => route.isFirst);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: ((context) => HomePage(
+              userToken: _userToken,
+            )),
       ),
     );
   }

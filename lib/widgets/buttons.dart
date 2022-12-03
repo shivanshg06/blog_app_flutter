@@ -3,12 +3,12 @@
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:flutter/material.dart';
 
-mainButton(String text, BuildContext context) {
+mainButton(String text, BuildContext context, VoidCallback function) {
   return Container(
     width: MediaQuery.of(context).size.width,
     height: 55,
     child: ElevatedButton(
-      onPressed: () {},
+      onPressed: function,
       style: ButtonStyle(
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

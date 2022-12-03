@@ -2,8 +2,8 @@ import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
+  const HomePage({super.key, required this.userToken});
+  final String userToken;
   @override
   State<HomePage> createState() => _HomePageState();
 }
