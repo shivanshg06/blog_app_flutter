@@ -12,11 +12,12 @@ AppBar mainAppBar({
     ),
     centerTitle: centre,
     leading: IconButton(
-        onPressed: leadingF,
-        icon: Icon(
-          main ? Icons.menu : Icons.arrow_back,
-          color: Colors.white,
-        )),
+      onPressed: leadingF,
+      icon: Icon(
+        main ? Icons.menu : Icons.arrow_back,
+        color: Colors.white,
+      ),
+    ),
   );
 }
 

@@ -174,3 +174,60 @@ TextField textField2(TextEditingController textEditingController,
     ),
   );
 }
+
+TextField textField3(TextEditingController textEditingController,
+    String display, TextInputType keyboard, int limit) {
+  return TextField(
+    keyboardType: keyboard,
+    controller: textEditingController,
+    maxLengthEnforcement: MaxLengthEnforcement.enforced,
+    cursorColor: accentColor,
+    maxLength: limit,
+    maxLines: null,
+    decoration: InputDecoration(
+      label: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+        child: Text(
+          display,
+          style: TextStyle(
+            color: accentColor,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderSide: BorderSide(
+          width: 1,
+          style: BorderStyle.solid,
+          color: accentColor,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderSide: BorderSide(
+          width: 2,
+          style: BorderStyle.solid,
+          color: accentColor,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderSide: BorderSide(
+          width: 2,
+          style: BorderStyle.solid,
+          color: accentColor,
+        ),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderSide: BorderSide(
+          width: 2,
+          style: BorderStyle.solid,
+          color: accentColor,
+        ),
+      ),
+    ),
+  );
+}
