@@ -10,6 +10,7 @@ import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -89,6 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future<void> signUp() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String name = nameController.text;
     String email = emailController.text;
     String password = passwordController.text;
@@ -99,6 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
     }
     var userToken = await _userHelper.register(name, email, password);
     _userToken = userToken;
+    sharedPreferences.setString('userToken', userToken);
     Navigator.popUntil(context, (route) => route.isFirst);
     Navigator.pushReplacement(
       context,

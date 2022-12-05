@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:blog_app_flutter/pages/signup.dart';
@@ -6,6 +6,7 @@ import 'package:blog_app_flutter/screens/onboarding.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NavDrawer extends StatelessWidget {
   NavDrawer({super.key, required this.userToken});
@@ -56,8 +57,11 @@ class NavDrawer extends StatelessWidget {
               'Log Out',
               style: TextStyle(fontSize: 17),
             ),
-            onTap: () {
+            onTap: () async {
+              SharedPreferences sharedPreferences =
+                  await SharedPreferences.getInstance();
               userHelper.logout(userToken);
+              sharedPreferences.remove('userToken');
               Navigator.popUntil(context, (route) => route.isFirst);
               Navigator.pushReplacement(
                 context,
