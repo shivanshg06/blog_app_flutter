@@ -4,8 +4,8 @@ import 'dart:developer';
 
 import 'package:blog_app_flutter/backend/blog_helper.dart';
 import 'package:blog_app_flutter/pages/blogs/add.dart';
-import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/blog_index_tile.dart';
+import 'package:blog_app_flutter/widgets/drawer.dart';
 import 'package:blog_app_flutter/widgets/progress_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +21,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          mainAppBar(title: 'Latest Blogs', leadingF: menuFunction, main: true),
+      appBar: AppBar(
+        title: Text(
+          'Latest Blogs',
+        ),
+        leading: Builder(
+          builder: ((context) => IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: Icon(
+                  Icons.menu,
+                ),
+              )),
+        ),
+      ),
       body: FutureBuilder(
         future: _blogHelper.index(),
         builder: (context, snapshot) {
@@ -41,6 +54,7 @@ class _HomePageState extends State<HomePage> {
           return Center(child: circularProgressIndicator1());
         },
       ),
+      drawer: NavDrawer(userToken: widget.userToken),
       floatingActionButton: FloatingActionButton(
         onPressed: (() => Navigator.push(
               context,
@@ -55,6 +69,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  void menuFunction() {}
 }

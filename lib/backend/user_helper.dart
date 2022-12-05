@@ -54,11 +54,25 @@ class UserHelper {
   }
 
   Future getId(String userToken) async {
-    var response = await http.get(Uri.parse('${baseUrl}userId'), headers: {
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $userToken'
-    });
+    var response = await http.get(
+      Uri.parse('${baseUrl}userId'),
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $userToken'
+      },
+    );
     var data = jsonDecode(response.body);
     return data;
+  }
+
+  Future logout(String userToken) async {
+    var response = await http.post(
+      Uri.parse('${baseUrl}logout'),
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $userToken'
+      },
+    );
+    log('${response.body}');
   }
 }

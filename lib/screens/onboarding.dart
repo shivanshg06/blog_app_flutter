@@ -62,7 +62,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: const Padding(
           padding: defaultProceedButtonPadding,
           child: Text(
-            'Sign up',
+            'Sign In',
             style: defaultProceedButtonTextStyle,
           ),
         ),
