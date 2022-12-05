@@ -11,11 +11,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var userToken = prefs.getString("userToken");
-  log('$userToken');
+  log('User Token = $userToken');
 
-  runApp(
-    userToken == null ? MyApp() : MyAppLogged(userToken: userToken),
-  );
+  runApp(userToken == null ? MyApp() : MyAppLogged(userToken: userToken));
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +33,7 @@ class MyApp extends StatelessWidget {
 class MyAppLogged extends StatelessWidget {
   const MyAppLogged({super.key, required this.userToken});
   final String userToken;
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
