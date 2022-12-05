@@ -102,22 +102,25 @@ class _BlogPageState extends State<BlogPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          blogHelper.destroy(
-            widget.blogId,
-            widget.userToken,
-          );
-          Navigator.popUntil(context, (route) => route.isFirst);
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: ((context) => HomePage(userToken: widget.userToken)),
-            ),
-          );
-        },
-        backgroundColor: Colors.transparent,
-        child: Image.asset('assets/icons/circled-x.png'),
+      floatingActionButton: Visibility(
+        visible: isAuthorised,
+        child: FloatingActionButton(
+          onPressed: () {
+            blogHelper.destroy(
+              widget.blogId,
+              widget.userToken,
+            );
+            Navigator.popUntil(context, (route) => route.isFirst);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: ((context) => HomePage(userToken: widget.userToken)),
+              ),
+            );
+          },
+          backgroundColor: Colors.transparent,
+          child: Image.asset('assets/icons/circled-x.png'),
+        ),
       ),
     );
   }
@@ -129,7 +132,6 @@ class _BlogPageState extends State<BlogPage> {
     if (blog_user_id == auth_user_id['id']) {
       isAuthorised = true;
       setState(() {});
-      log('$isAuthorised');
     }
   }
 }
