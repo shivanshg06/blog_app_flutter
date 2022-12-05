@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
 class MyAppLogged extends StatelessWidget {
   const MyAppLogged({super.key, required this.userToken});
   final String userToken;
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
