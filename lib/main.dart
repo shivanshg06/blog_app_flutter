@@ -10,9 +10,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  var email = prefs.getString("email");
   var userToken = prefs.getString("userToken");
-  log('$email $userToken');
+  log('$userToken');
 
   runApp(
     userToken == null ? MyApp() : MyAppLogged(userToken: userToken),

@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'package:blog_app_flutter/backend/user_helper.dart';
-import 'package:blog_app_flutter/pages/signup.dart';
 import 'package:blog_app_flutter/screens/onboarding.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:onboarding/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NavDrawer extends StatelessWidget {

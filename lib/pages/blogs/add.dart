@@ -46,7 +46,7 @@ class _AddBlogState extends State<AddBlog> {
                 ),
               ),
               const SizedBox(height: 15),
-              textField1_5(titleController, 'Title', TextInputType.text, false),
+              textField3(titleController, 'Title', TextInputType.text, 10000),
               const SizedBox(height: 10),
               textField2(contentController, 'Content', TextInputType.text),
               const SizedBox(height: 10),
