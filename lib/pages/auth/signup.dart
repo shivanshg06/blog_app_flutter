@@ -3,8 +3,8 @@
 import 'dart:developer';
 
 import 'package:blog_app_flutter/backend/user_helper.dart';
-import 'package:blog_app_flutter/pages/home.dart';
-import 'package:blog_app_flutter/pages/signin.dart';
+import 'package:blog_app_flutter/pages/auth/signin.dart';
+import 'package:blog_app_flutter/pages/auth/security_question.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
@@ -43,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
               Image.asset('assets/images/rocket.png'),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               Text(
-                'Sign Up\nRocket Up Your Growth!',
+                'Rocket Up Your Growth!',
                 style: TextStyle(
                   fontSize: 30,
                   color: accentColor,
@@ -106,9 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: ((context) => HomePage(
-              userToken: _userToken,
-            )),
+        builder: ((context) => SecurityQuestion(userToken: _userToken)),
       ),
     );
   }

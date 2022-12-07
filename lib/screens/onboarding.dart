@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
-import 'package:blog_app_flutter/pages/signin.dart';
+import 'package:blog_app_flutter/pages/auth/signin.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';

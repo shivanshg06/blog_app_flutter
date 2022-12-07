@@ -17,14 +17,18 @@ class UserHelper {
           "email": email,
           "password": password,
           "password_confirmation": password,
+          "security-question": '',
+          "security-answer": '',
         },
       );
-      var data = jsonDecode(response.body);
+      log(response.body);
       if (response.statusCode == 201) {
-        log('OK');
+        var data = jsonDecode(response.body);
+        log('${data['token']}');
         return data['token'];
       }
-      return Future.error('Server Error');
+      log(response.body);
+      return Future.error('Server Error\n${response.body}');
     } catch (e) {
       log('$e');
       return e;
@@ -41,12 +45,13 @@ class UserHelper {
             "email": email,
             "password": password,
           });
-      var data = jsonDecode(response.body);
+      log(response.body);
       if (response.statusCode == 200) {
-        log('OK');
+        var data = jsonDecode(response.body);
+        log('${data['token']}');
         return data['token'];
       }
-      return Future.error('Server Error');
+      return Future.error('Server Error\n${response.body}');
     } catch (e) {
       log('$e');
       return e;
@@ -54,25 +59,64 @@ class UserHelper {
   }
 
   Future getId(String userToken) async {
-    var response = await http.get(
-      Uri.parse('${baseUrl}userId'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $userToken'
-      },
-    );
-    var data = jsonDecode(response.body);
-    return data;
+    try {
+      var response = await http.get(
+        Uri.parse('${baseUrl}userId'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $userToken'
+        },
+      );
+      log(response.body);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        return data;
+      }
+      return Future.error('Server Error\n${response.body}');
+    } catch (e) {
+      log('$e');
+      return e;
+    }
   }
 
   Future logout(String userToken) async {
-    var response = await http.post(
-      Uri.parse('${baseUrl}logout'),
-      headers: {
+    try {
+      var response = await http.post(
+        Uri.parse('${baseUrl}logout'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $userToken'
+        },
+      );
+      log(response.body);
+      if (response.statusCode == 200) {
+        return;
+      }
+      return Future.error('Server Error\n${response.body}');
+    } catch (e) {
+      log('$e');
+      return e;
+    }
+  }
+
+  Future setSecurity(String userToken, String question, String answer) async {
+    try {
+      var response =
+          await http.put(Uri.parse('${baseUrl}setSecurity/'), headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer $userToken'
-      },
-    );
-    log('${response.body}');
+      }, body: {
+        'security-question': question,
+        'security-answer': answer,
+      });
+      log(response.body);
+      if (response.statusCode == 200) {
+        return response.body;
+      }
+      return Future.error('Server Error\n${response.body}');
+    } catch (e) {
+      log('$e');
+      return e;
+    }
   }
 }

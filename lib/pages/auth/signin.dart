@@ -4,7 +4,7 @@ import 'dart:developer';
 
 import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:blog_app_flutter/pages/home.dart';
-import 'package:blog_app_flutter/pages/signup.dart';
+import 'package:blog_app_flutter/pages/auth/signup.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';

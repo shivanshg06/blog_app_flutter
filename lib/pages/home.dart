@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:developer';
 
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       body: FutureBuilder(
         future: _blogHelper.index(),
         builder: (context, snapshot) {
-          log('${snapshot.connectionState}');
+          log('${snapshot.connectionState} . ${snapshot.data}');
           if (snapshot.hasData) {
             return ListView.builder(
               itemCount: snapshot.data!.length,
