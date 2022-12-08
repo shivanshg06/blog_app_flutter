@@ -8,6 +8,7 @@ import 'package:blog_app_flutter/pages/blogs/update.dart';
 import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/progress_indicator.dart';
+import 'package:blog_app_flutter/widgets/test_styles.dart';
 import 'package:flutter/material.dart';
 
 class BlogPage extends StatefulWidget {
@@ -85,11 +86,7 @@ class _BlogPageState extends State<BlogPage> {
                   children: [
                     Text(
                       snapshot.data['title'],
-                      style: TextStyle(
-                        fontSize: 35,
-                        color: accentColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: titleStyle(),
                     ),
                     Text(
                       snapshot.data['content'],

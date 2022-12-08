@@ -21,9 +21,11 @@ class _SetprofileState extends State<Setprofile> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
           child: Column(
-            children: [mainButton('Set Later', context, setLater)],
+            children: [
+              mainButton('Set Later', context, setLater),
+              
+            ],
           ),
         ),
       ),

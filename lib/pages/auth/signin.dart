@@ -8,6 +8,7 @@ import 'package:blog_app_flutter/pages/auth/signup.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
+import 'package:blog_app_flutter/widgets/test_styles.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,11 +42,7 @@ class _SignInPageState extends State<SignInPage> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               Text(
                 'Identify Yourself',
-                style: TextStyle(
-                  fontSize: 30,
-                  color: accentColor,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: titleStyleVar(30),
               ),
               SizedBox(height: 20),
               textField1(
@@ -100,9 +97,7 @@ class _SignInPageState extends State<SignInPage> {
       children: [
         const Text(
           "Don't have an account?",
-          style: TextStyle(
-            fontSize: 15,
-          ),
+          style: TextStyle(fontSize: 15),
         ),
         const SizedBox(
           width: 2,
@@ -117,13 +112,9 @@ class _SignInPageState extends State<SignInPage> {
               ),
             );
           },
-          child: const Text(
+          child: Text(
             "Sign Up",
-            style: TextStyle(
-              color: accentColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
+            style: titleStyleVar(16),
           ),
         ),
       ],
@@ -136,22 +127,16 @@ class _SignInPageState extends State<SignInPage> {
       children: [
         const Text(
           "Forgot Password?",
-          style: TextStyle(
-            fontSize: 15,
-          ),
+          style: TextStyle(fontSize: 15),
         ),
         const SizedBox(
           width: 2,
         ),
         GestureDetector(
           onTap: () {},
-          child: const Text(
+          child: Text(
             "Click Here",
-            style: TextStyle(
-              color: accentColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
+            style: titleStyleVar(16),
           ),
         ),
       ],

@@ -2,6 +2,7 @@
 
 import 'package:blog_app_flutter/pages/auth/signin.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
+import 'package:blog_app_flutter/widgets/test_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
 
@@ -138,11 +139,7 @@ PageModel pageStyles(BuildContext context, String title, String img) {
               SizedBox(height: MediaQuery.of(context).size.height * 0.2),
               Text(
                 title,
-                style: TextStyle(
-                  fontSize: 35,
-                  color: accentColor,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: titleStyle(),
               ),
             ],
           ),

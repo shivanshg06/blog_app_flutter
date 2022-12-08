@@ -7,6 +7,7 @@ import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
+import 'package:blog_app_flutter/widgets/test_styles.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 
@@ -39,11 +40,7 @@ class _AddBlogState extends State<AddBlog> {
               // ignore: prefer_const_constructors
               Text(
                 'Post New Blog',
-                style: const TextStyle(
-                  fontSize: 25,
-                  color: accentColor,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: titleStyleVar(25),
               ),
               const SizedBox(height: 15),
               textField3(titleController, 'Title', TextInputType.text, 50),

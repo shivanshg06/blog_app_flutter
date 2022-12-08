@@ -8,6 +8,7 @@ import 'package:blog_app_flutter/pages/auth/security_question.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
+import 'package:blog_app_flutter/widgets/test_styles.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,11 +45,7 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               Text(
                 'Rocket Up Your Growth!',
-                style: TextStyle(
-                  fontSize: 30,
-                  color: accentColor,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: titleStyleVar(30),
               ),
               SizedBox(height: 20),
               textField1(
@@ -118,7 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
         const Text(
           "Already have an account?",
           style: TextStyle(
-            fontSize: 15,
+            fontSize: 15
           ),
         ),
         const SizedBox(
@@ -134,13 +131,9 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             );
           },
-          child: const Text(
+          child: Text(
             "Sign In",
-            style: TextStyle(
-              color: accentColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
+            style: titleStyleVar(16),
           ),
         ),
       ],

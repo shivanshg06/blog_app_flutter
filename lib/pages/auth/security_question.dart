@@ -7,6 +7,7 @@ import 'package:blog_app_flutter/pages/profile/set_profile.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
+import 'package:blog_app_flutter/widgets/test_styles.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 
@@ -37,26 +38,19 @@ class _SecurityQuestionState extends State<SecurityQuestion> {
               children: <Widget>[
                 Text(
                   'Set Security Question',
-                  style: TextStyle(
-                    fontSize: 35,
-                    color: accentColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: titleStyle(),
                 ),
                 SizedBox(height: 10),
                 Text(
                   'This will allow us to protect your\naccount better.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 17
                   ),
                 ),
                 SizedBox(height: 20),
                 DropdownButton(
                   menuMaxHeight: null,
-                  style: TextStyle(
-                    color: Colors.amber,
-                  ),
                   iconEnabledColor: accentColor,
                   value: question,
                   hint: Text('Select a Question'),
