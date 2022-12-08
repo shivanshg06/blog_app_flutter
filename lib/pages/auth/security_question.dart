@@ -5,9 +5,9 @@ import 'dart:developer';
 import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:blog_app_flutter/pages/profile/set_profile.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
-import 'package:blog_app_flutter/widgets/app_bars.dart';
+import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
-import 'package:blog_app_flutter/widgets/test_styles.dart';
+import 'package:blog_app_flutter/widgets/styles/test_styles.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 

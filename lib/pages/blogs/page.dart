@@ -7,8 +7,8 @@ import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:blog_app_flutter/pages/blogs/update.dart';
 import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
-import 'package:blog_app_flutter/widgets/progress_indicator.dart';
-import 'package:blog_app_flutter/widgets/test_styles.dart';
+import 'package:blog_app_flutter/widgets/styles/progress_indicator.dart';
+import 'package:blog_app_flutter/widgets/styles/test_styles.dart';
 import 'package:flutter/material.dart';
 
 class BlogPage extends StatefulWidget {

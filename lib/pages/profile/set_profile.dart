@@ -1,7 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_literals_to_create_immutables
 
 import 'package:blog_app_flutter/pages/home.dart';
-import 'package:blog_app_flutter/widgets/app_bars.dart';
+import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 

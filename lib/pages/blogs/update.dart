@@ -2,9 +2,9 @@
 
 import 'package:blog_app_flutter/backend/blog_helper.dart';
 import 'package:blog_app_flutter/pages/home.dart';
-import 'package:blog_app_flutter/widgets/app_bars.dart';
+import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
-import 'package:blog_app_flutter/widgets/progress_indicator.dart';
+import 'package:blog_app_flutter/widgets/styles/progress_indicator.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 

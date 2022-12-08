@@ -6,7 +6,7 @@ import 'package:blog_app_flutter/backend/blog_helper.dart';
 import 'package:blog_app_flutter/pages/blogs/add.dart';
 import 'package:blog_app_flutter/widgets/blog_index_tile.dart';
 import 'package:blog_app_flutter/widgets/drawer.dart';
-import 'package:blog_app_flutter/widgets/progress_indicator.dart';
+import 'package:blog_app_flutter/widgets/styles/progress_indicator.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
