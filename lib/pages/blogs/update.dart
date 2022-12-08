@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables
+
 
 import 'package:blog_app_flutter/backend/blog_helper.dart';
 import 'package:blog_app_flutter/pages/home.dart';
@@ -14,7 +14,7 @@ class UpdateBlog extends StatefulWidget {
     required this.blogId,
     required this.userToken,
   });
-  final blogId;
+  final String blogId;
   final String userToken;
   @override
   State<UpdateBlog> createState() => _UpdateBlogState();
@@ -36,7 +36,7 @@ class _UpdateBlogState extends State<UpdateBlog> {
           }),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 30, 10, 30),
+          padding: const EdgeInsets.fromLTRB(10, 30, 10, 30),
           child: FutureBuilder(
             future: blogHelper.show(widget.blogId),
             builder: ((context, snapshot) {
@@ -46,10 +46,10 @@ class _UpdateBlogState extends State<UpdateBlog> {
                   children: [
                     textField3(titleEditingController, 'Title',
                         TextInputType.text, 50),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     textField3(contentEditingController, 'Content',
                         TextInputType.text, 3000),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     mainButton('Update', context, update),
                   ],
                 );

@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, prefer_const_literals_to_create_immutables
+
 
 import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
@@ -17,16 +17,12 @@ class _SetprofileState extends State<Setprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: hiddenAppBar(),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              mainButton('Set Later', context, setLater),
-              
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            mainButton('Set Later', context, setLater),
+            
+          ],
         ),
       ),
     );

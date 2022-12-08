@@ -1,10 +1,9 @@
-// ignore_for_file: sized_box_for_whitespace, use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously
 
 import 'dart:developer';
 
 import 'package:blog_app_flutter/backend/blog_helper.dart';
 import 'package:blog_app_flutter/pages/home.dart';
-import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
 import 'package:blog_app_flutter/widgets/styles/test_styles.dart';

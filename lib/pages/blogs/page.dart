@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'dart:developer';
 
@@ -6,7 +6,6 @@ import 'package:blog_app_flutter/backend/blog_helper.dart';
 import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:blog_app_flutter/pages/blogs/update.dart';
 import 'package:blog_app_flutter/pages/home.dart';
-import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/styles/progress_indicator.dart';
 import 'package:blog_app_flutter/widgets/styles/test_styles.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class BlogPage extends StatefulWidget {
     required this.title_blog,
     required this.userToken,
   });
-  final blogId;
+  final String blogId;
   final String title_blog;
   final String userToken;
   @override
@@ -46,7 +45,7 @@ class _BlogPageState extends State<BlogPage> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
@@ -64,7 +63,7 @@ class _BlogPageState extends State<BlogPage> {
                   ),
                 );
               }),
-              icon: Icon(
+              icon: const Icon(
                 Icons.edit,
                 color: Colors.white,
               ),
@@ -74,7 +73,7 @@ class _BlogPageState extends State<BlogPage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
           child: FutureBuilder(
             future: blogHelper.show(widget.blogId),
             builder: (context, snapshot) {

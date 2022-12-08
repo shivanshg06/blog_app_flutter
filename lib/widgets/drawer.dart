@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'package:blog_app_flutter/backend/user_helper.dart';
+import 'package:blog_app_flutter/pages/auth/reset_password.dart';
 import 'package:blog_app_flutter/screens/onboarding.dart';
 import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,23 @@ class NavDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: ((context) => OnboardingScreen()),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.exit_to_app, size: 25, color: accentColor),
+            title: Text(
+              'Reset Password',
+              style: TextStyle(fontSize: 17),
+            ),
+            onTap: () async {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) =>
+                      ResetPasswordPage(userToken: userToken)),
                 ),
               );
             },

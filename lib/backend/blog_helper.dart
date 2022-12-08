@@ -52,8 +52,7 @@ class BlogHelper {
   Future store(String title, String content, String userToken) async {
     String slug = title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '');
     try {
-      var idData = await userHelper.getId(userToken);
-      String id = idData['id'].toString();
+      log('message 2');
       var response = await http.post(
         Uri.parse(baseUrl),
         headers: ({
@@ -64,15 +63,17 @@ class BlogHelper {
           "title": title,
           'slug': slug,
           "content": content,
-          'user_id': id,
         },
       );
+      log('message 3');
       var data = jsonDecode(response.body);
+      log('${response.statusCode}');
       if (response.statusCode == 201) {
         return data;
       }
       return response.body;
     } catch (e) {
+      log('$e');
       return Future.error(e);
     }
   }

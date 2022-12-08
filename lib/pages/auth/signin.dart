@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors, unused_field, use_build_context_synchronously
+// ignore_for_file:unused_field, use_build_context_synchronously
 
 import 'dart:developer';
 
 import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/pages/auth/signup.dart';
-import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
 import 'package:blog_app_flutter/widgets/styles/test_styles.dart';
@@ -29,43 +28,37 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: hiddenAppBar(),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(
-            20, MediaQuery.of(context).size.height * 0.05, 20, 0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset('assets/images/person.png'),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-              Text(
-                'Identify Yourself',
-                style: titleStyleVar(30),
-              ),
-              SizedBox(height: 20),
-              textField1(
-                emailController,
-                'Email',
-                TextInputType.emailAddress,
-                false,
-              ),
-              SizedBox(height: 20),
-              textField1(
-                passwordController,
-                'Password',
-                TextInputType.visiblePassword,
-                true,
-              ),
-              SizedBox(height: 20),
-              mainButton('Sign In', context, signIn),
-              SizedBox(height: 20),
-              signUpOption(),
-              SizedBox(height: 20),
-              forgotPasswordOption(),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset('assets/images/person.png'),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+            Text(
+              'Identify Yourself',
+              style: titleStyleVar(30),
+            ),
+            const SizedBox(height: 20),
+            textField1(
+              emailController,
+              'Email',
+              TextInputType.emailAddress,
+              false,
+            ),
+            const SizedBox(height: 20),
+            textField1(
+              passwordController,
+              'Password',
+              TextInputType.visiblePassword,
+              true,
+            ),
+            const SizedBox(height: 20),
+            mainButton('Sign In', context, signIn),
+            const SizedBox(height: 20),
+            signUpOption(),
+            const SizedBox(height: 20),
+            forgotPasswordOption(),
+          ],
         ),
       ),
     );
