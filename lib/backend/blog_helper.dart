@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:http/http.dart' as http;
 
 class BlogHelper {
-  UserHelper userHelper = UserHelper();
-  String baseUrl = 'http://127.0.0.1:8000/api/blogs/';
+  String baseUrl = 'http://localhost:8000/api/blogs/';
 
   Future<List> index() async {
     try {
@@ -39,12 +37,11 @@ class BlogHelper {
       var response = await http.get(Uri.parse('$baseUrl$id/'));
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
-        // log('$data');
         return data['user_id'];
       }
       return Future.error('Server Error');
     } catch (e) {
-      log('$e');
+      log('error $e');
       return Future.error(e);
     }
   }
