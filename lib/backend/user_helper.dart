@@ -21,15 +21,15 @@ class UserHelper {
           "security-answer": '',
         },
       );
-      log('${response.body} .  ${response.statusCode}');
+      log('${response.body} . ${response.statusCode}');
       if (response.statusCode == 201) {
         var data = jsonDecode(response.body);
-        // log('${data['token']}');
-        return data['token'];
+        return [data['token'], response.statusCode];
       }
-      return Future.error('Server Error\n${response.body}');
+      var error = jsonDecode(response.body);
+      return [error['message'], response.statusCode];
     } catch (e) {
-      log('Error   $e');
+      log('Error:: $e');
       return e;
     }
   }
@@ -44,15 +44,15 @@ class UserHelper {
             "email": email,
             "password": password,
           });
-      log(response.body);
+      log('${response.body} . ${response.statusCode}');
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
-        log('${data['token']}');
-        return data['token'];
+        return [data['token'], response.statusCode];
       }
-      return Future.error('Server Error\n${response.body}');
+      var error = jsonDecode(response.body);
+      return [error['message'], response.statusCode];
     } catch (e) {
-      log('$e');
+      log('Error:: $e');
       return e;
     }
   }

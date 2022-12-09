@@ -5,12 +5,14 @@ import 'dart:developer';
 import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/pages/auth/signup.dart';
+import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
 import 'package:blog_app_flutter/widgets/styles/test_styles.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -70,19 +72,37 @@ class _SignInPageState extends State<SignInPage> {
     String email = emailController.text;
     String password = passwordController.text;
 
-    var userToken = await _userHelper.signin(email, password);
-    log(_userToken);
-    _userToken = userToken;
-    sharedPreferences.setString('userToken', userToken);
-    Navigator.popUntil(context, (route) => route.isFirst);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: ((context) => HomePage(
-              userToken: _userToken,
-            )),
-      ),
-    );
+    try {
+      var userToken = await _userHelper.signin(email, password);
+      log('Status Code ${userToken[1]}');
+      if (userToken[1] == 200) {
+        log('Success');
+        log(userToken[0]);
+        _userToken = userToken[0];
+        sharedPreferences.setString('userToken', userToken[0]);
+        Navigator.popUntil(context, (route) => route.isFirst);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => HomePage(
+                  userToken: _userToken,
+                )),
+          ),
+        );
+      } else {
+        log('Fail $userToken');
+        Fluttertoast.showToast(
+          msg: userToken[0],
+          toastLength: Toast.LENGTH_LONG,
+          textColor: accentColor,
+          backgroundColor: Colors.white,
+          fontSize: 16,
+          gravity: ToastGravity.BOTTOM,
+        );
+      }
+    } catch (e) {
+      log('Error Caught ::$e');
+    }
   }
 
   Row signUpOption() {

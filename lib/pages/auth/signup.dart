@@ -5,11 +5,13 @@ import 'dart:developer';
 import 'package:blog_app_flutter/backend/user_helper.dart';
 import 'package:blog_app_flutter/pages/auth/signin.dart';
 import 'package:blog_app_flutter/pages/auth/security_question.dart';
+import 'package:blog_app_flutter/utils/colors.dart';
 import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
 import 'package:blog_app_flutter/widgets/styles/test_styles.dart';
 import 'package:blog_app_flutter/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -70,7 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Future<void> signUp() async {
+  void signUp() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String name = nameController.text;
     String email = emailController.text;
@@ -80,20 +82,35 @@ class _SignUpPageState extends State<SignUpPage> {
       log('Passwords Are Not Same');
       return;
     }
-    var userToken = await _userHelper.register(name, email, password);
-    if (userToken is! String) {
-      log('Server Error');
-      return;
+    try {
+      var userToken = await _userHelper.register(name, email, password);
+      log('Status Code ${userToken[1]}');
+      if (userToken[1] == 200) {
+        log('Success');
+        log(userToken[0]);
+        _userToken = userToken[0];
+        sharedPreferences.setString('userToken', userToken[0]);
+        Navigator.popUntil(context, (route) => route.isFirst);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => SecurityQuestion(userToken: _userToken)),
+          ),
+        );
+      } else {
+        log('Fail $userToken');
+        Fluttertoast.showToast(
+          msg: userToken[0],
+          toastLength: Toast.LENGTH_LONG,
+          textColor: accentColor,
+          backgroundColor: Colors.white,
+          fontSize: 16,
+          gravity: ToastGravity.BOTTOM,
+        );
+      }
+    } catch (e) {
+      log('Error Caught ::$e');
     }
-    _userToken = userToken;
-    sharedPreferences.setString('userToken', userToken);
-    Navigator.popUntil(context, (route) => route.isFirst);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: ((context) => SecurityQuestion(userToken: _userToken)),
-      ),
-    );
   }
 
   Row signInOption() {

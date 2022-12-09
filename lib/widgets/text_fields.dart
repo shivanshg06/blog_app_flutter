@@ -268,7 +268,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             ),
           ),
         ),
-        suffixIconColor: Colors.white,
+        suffixIconColor: accentColor,
         suffixIcon: IconButton(
           onPressed: (() {
             setState(() {
@@ -279,6 +279,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             padding: const EdgeInsets.fromLTRB(0, 0, 40, 0),
             child: Icon(
               visiblePassword ? Icons.visibility : Icons.visibility_off,
+              color: visiblePassword
+                  ? accentColor.withOpacity(0.5)
+                  : accentColor.withOpacity(0.9),
             ),
           ),
         ),
