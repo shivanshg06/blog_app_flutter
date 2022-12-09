@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 class UserHelper {
-  String baseUrl = 'http://127.0.0.1:8000/api/user/';
+  String baseUrl = 'http://localhost:8000/api/user/';
   Future register(String name, String email, String password) async {
     try {
       var response = await http.post(
@@ -21,16 +21,15 @@ class UserHelper {
           "security-answer": '',
         },
       );
-      log(response.body);
+      log('${response.body} .  ${response.statusCode}');
       if (response.statusCode == 201) {
         var data = jsonDecode(response.body);
-        log('${data['token']}');
+        // log('${data['token']}');
         return data['token'];
       }
-      log(response.body);
       return Future.error('Server Error\n${response.body}');
     } catch (e) {
-      log('$e');
+      log('Error   $e');
       return e;
     }
   }
@@ -67,7 +66,7 @@ class UserHelper {
           'Authorization': 'Bearer $userToken'
         },
       );
-      log(response.body);
+      log('This is the only way\n${response.body}');
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         return data;

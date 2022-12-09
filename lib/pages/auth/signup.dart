@@ -32,48 +32,51 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       appBar: hiddenAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset('assets/images/rocket.png'),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            Text(
-              'Rocket Up Your Growth!',
-              style: titleStyleVar(30),
-            ),
-            const SizedBox(height: 20),
-            textField1(
-              nameController,
-              'Name',
-              TextInputType.name,
-              false,
-            ),
-            const SizedBox(height: 20),
-            textField1(
-              emailController,
-              'Email',
-              TextInputType.emailAddress,
-              false,
-            ),
-            const SizedBox(height: 20),
-            textField1(
-              passwordController,
-              'Password',
-              TextInputType.visiblePassword,
-              true,
-            ),
-            const SizedBox(height: 20),
-            textField1(
-              confirmPasswordController,
-              'Confirm Password',
-              TextInputType.visiblePassword,
-              true,
-            ),
-            const SizedBox(height: 20),
-            mainButton('Sign Up', context, signUp),
-            const SizedBox(height: 20),
-            signInOption(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset('assets/images/rocket.png'),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              Text(
+                'Rocket Up Your Growth!',
+                style: titleStyleVar(30),
+              ),
+              const SizedBox(height: 20),
+              textField1(
+                nameController,
+                'Name',
+                TextInputType.name,
+                false,
+              ),
+              const SizedBox(height: 20),
+              textField1(
+                emailController,
+                'Email',
+                TextInputType.emailAddress,
+                false,
+              ),
+              const SizedBox(height: 20),
+              textField1(
+                passwordController,
+                'Password',
+                TextInputType.visiblePassword,
+                true,
+              ),
+              const SizedBox(height: 20),
+              textField1(
+                confirmPasswordController,
+                'Confirm Password',
+                TextInputType.visiblePassword,
+                true,
+              ),
+              const SizedBox(height: 20),
+              mainButton('Sign Up', context, signUp),
+              const SizedBox(height: 20),
+              signInOption(),
+            ],
+          ),
         ),
       ),
     );
@@ -90,6 +93,10 @@ class _SignUpPageState extends State<SignUpPage> {
       return;
     }
     var userToken = await _userHelper.register(name, email, password);
+    if (userToken is! String) {
+      log('Server Error');
+      return;
+    }
     _userToken = userToken;
     sharedPreferences.setString('userToken', userToken);
     Navigator.popUntil(context, (route) => route.isFirst);

@@ -48,7 +48,6 @@ class _SecurityQuestionState extends State<SecurityQuestion> {
               DropdownButton(
                 menuMaxHeight: null,
                 iconEnabledColor: accentColor,
-                value: _dropdownValue,
                 hint: const Text('Select a Question'),
                 items: [
                   DropdownMenuItem(
@@ -100,8 +99,19 @@ class _SecurityQuestionState extends State<SecurityQuestion> {
                 },
               ),
               const SizedBox(height: 20),
-              textField1(
-                  answerController, 'Answer', TextInputType.text, false),
+              const Text(
+                'Your selected question is:',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: accentColor, fontSize: 15),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                _dropdownValue == '' ? 'No Question Selected' : _dropdownValue,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 15),
+              ),
+              const SizedBox(height: 20),
+              textField1(answerController, 'Answer', TextInputType.text, false),
               const SizedBox(height: 20),
               mainButton(
                 'Set Security',
@@ -120,7 +130,7 @@ class _SecurityQuestionState extends State<SecurityQuestion> {
   }
 
   TextStyle _textStyle() {
-    return TextStyle(
+    return const TextStyle(
       color: Colors.white,
     );
   }

@@ -36,7 +36,6 @@ class _AddBlogState extends State<AddBlog> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ignore: prefer_const_constructors
               Text(
                 'Post New Blog',
                 style: titleStyleVar(25),
@@ -62,8 +61,10 @@ class _AddBlogState extends State<AddBlog> {
     log('$response');
     Navigator.popUntil(context, (route) => route.isFirst);
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: ((context) => HomePage(userToken: widget.userToken))));
+      context,
+      MaterialPageRoute(
+        builder: ((context) => HomePage(userToken: widget.userToken)),
+      ),
+    );
   }
 }
