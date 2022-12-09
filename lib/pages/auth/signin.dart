@@ -29,34 +29,37 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       appBar: hiddenAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset('assets/images/person.png'),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-            Text(
-              'Identify Yourself',
-              style: titleStyleVar(30),
-            ),
-            const SizedBox(height: 20),
-            textField1(
-              emailController,
-              'Email',
-              TextInputType.emailAddress,
-            ),
-            const SizedBox(height: 20),
-            PasswordTextField(
-              textEditingController: passwordController,
-              display: 'Password',
-              keyboard: TextInputType.visiblePassword,
-            ),
-            const SizedBox(height: 20),
-            mainButton('Sign In', context, signIn),
-            const SizedBox(height: 20),
-            signUpOption(),
-            const SizedBox(height: 20),
-            forgotPasswordOption(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset('assets/images/person.png'),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              Text(
+                'Identify Yourself',
+                style: titleStyleVar(30),
+              ),
+              const SizedBox(height: 20),
+              textField1(
+                emailController,
+                'Email',
+                TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 20),
+              PasswordTextField(
+                textEditingController: passwordController,
+                display: 'Password',
+                keyboard: TextInputType.visiblePassword,
+              ),
+              const SizedBox(height: 20),
+              mainButton('Sign In', context, signIn),
+              const SizedBox(height: 20),
+              signUpOption(),
+              const SizedBox(height: 20),
+              forgotPasswordOption(),
+            ],
+          ),
         ),
       ),
     );

@@ -10,6 +10,7 @@ TextField textField1(TextEditingController textEditingController,
     keyboardType: keyboard,
     maxLengthEnforcement: MaxLengthEnforcement.enforced,
     cursorColor: accentColor,
+    controller: textEditingController,
     decoration: InputDecoration(
       label: Padding(
         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
