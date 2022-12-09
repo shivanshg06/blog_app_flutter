@@ -79,13 +79,21 @@ class _SignUpPageState extends State<SignUpPage> {
     String password = passwordController.text;
     String confirmPassword = confirmPasswordController.text;
     if (password != confirmPassword) {
-      log('Passwords Are Not Same');
+      Fluttertoast.showToast(
+        msg: 'Passwords are not Equal!',
+        toastLength: Toast.LENGTH_LONG,
+        textColor: accentColor,
+        backgroundColor: Colors.white,
+        fontSize: 16,
+        gravity: ToastGravity.BOTTOM,
+      );
       return;
     }
     try {
+      log('OK');
       var userToken = await _userHelper.register(name, email, password);
       log('Status Code ${userToken[1]}');
-      if (userToken[1] == 200) {
+      if (userToken[1] == 201) {
         log('Success');
         log(userToken[0]);
         _userToken = userToken[0];
