@@ -119,4 +119,28 @@ class UserHelper {
       return e;
     }
   }
+
+  Future resetPassword(String userToken, String oldPass, String newPass) async {
+    try {
+      var response =
+          await http.put(Uri.parse('${baseUrl}resetPassword'), headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $userToken'
+      }, body: {
+        'old-password': oldPass,
+        'password': newPass,
+        'password_confirmation': newPass,
+      });
+      log('${response.body} ${response.statusCode}');
+      var data = jsonDecode(response.body);
+      log('Data => $data');
+      if (response.statusCode == 200) {
+        return [data['message'], response.statusCode];
+      }
+      return [data['message'], response.statusCode];
+    } catch (e) {
+      log('$e');
+      return e;
+    }
+  }
 }

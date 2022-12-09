@@ -82,8 +82,8 @@ class _SignUpPageState extends State<SignUpPage> {
       Fluttertoast.showToast(
         msg: 'Passwords are not Equal!',
         toastLength: Toast.LENGTH_LONG,
-        textColor: accentColor,
-        backgroundColor: Colors.white,
+        textColor: Colors.red,
+        backgroundColor: const Color.fromARGB(10, 255, 255, 255),
         fontSize: 16,
         gravity: ToastGravity.BOTTOM,
       );

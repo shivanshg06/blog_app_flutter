@@ -94,8 +94,8 @@ class _SignInPageState extends State<SignInPage> {
         Fluttertoast.showToast(
           msg: userToken[0],
           toastLength: Toast.LENGTH_LONG,
-          textColor: accentColor,
-          backgroundColor: Colors.white,
+          textColor: Colors.red,
+          backgroundColor: const Color.fromARGB(10, 255, 255, 255),
           fontSize: 16,
           gravity: ToastGravity.BOTTOM,
         );

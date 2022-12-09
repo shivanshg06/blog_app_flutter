@@ -8,6 +8,7 @@ import 'package:blog_app_flutter/widgets/blog_index_tile.dart';
 import 'package:blog_app_flutter/widgets/drawer.dart';
 import 'package:blog_app_flutter/widgets/styles/progress_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.userToken});
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       body: FutureBuilder(
         future: _blogHelper.index(),
         builder: (context, snapshot) {
-          log('${snapshot.connectionState}');
+          // log('${snapshot.connectionState}   ${snapshot.data}   ${snapshot.error}');
           if (snapshot.hasData) {
             return ListView.builder(
               itemCount: snapshot.data!.length,
@@ -47,6 +48,15 @@ class _HomePageState extends State<HomePage> {
                   userToken: widget.userToken,
                 );
               },
+            );
+          } else if (snapshot.error == 'Server Error') {
+            Fluttertoast.showToast(
+              msg: 'Server Error\nRetryings in 30 seconds',
+              toastLength: Toast.LENGTH_LONG,
+              textColor: Colors.red,
+              backgroundColor: const Color.fromARGB(100, 255, 255, 255),
+              fontSize: 20,
+              gravity: ToastGravity.BOTTOM,
             );
           }
           return Center(child: circularProgressIndicator1());
