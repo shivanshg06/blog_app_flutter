@@ -122,9 +122,10 @@ class _BlogPageState extends State<BlogPage> {
   }
 
   void authorisation() async {
+    log('OK 1');
     var blog_user_id = await blogHelper.getUser(widget.blogId);
     var auth_user_id = await userHelper.getId(widget.userToken);
-    log('$blog_user_id  ${auth_user_id['id']}');
+    log('$blog_user_id  $auth_user_id');
     if (blog_user_id == auth_user_id['id']) {
       isAuthorised = true;
       setState(() {});
