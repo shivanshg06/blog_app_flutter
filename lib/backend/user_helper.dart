@@ -57,27 +57,6 @@ class UserHelper {
     }
   }
 
-  Future getId(String userToken) async {
-    try {
-      var response = await http.get(
-        Uri.parse('${baseUrl}userId'),
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer $userToken'
-        },
-      );
-      log('This is the only way\n${response.body}');
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        return data;
-      }
-      return Future.error('Server Error\n${response.body}');
-    } catch (e) {
-      log('$e');
-      return e;
-    }
-  }
-
   Future logout(String userToken) async {
     try {
       var response = await http.post(
@@ -100,19 +79,41 @@ class UserHelper {
 
   Future setSecurity(String userToken, String question, String answer) async {
     try {
-      var response =
-          await http.put(Uri.parse('${baseUrl}setSecurity/'), headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $userToken'
-      }, body: {
-        'security-question': question,
-        'security-answer': answer,
-      });
-      log(response.body);
+      var response = await http.put(
+        Uri.parse('${baseUrl}setSecurity/'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $userToken'
+        },
+        body: {
+          'security-question': question,
+          'security-answer': answer,
+        },
+      );
       if (response.statusCode == 200) {
-        return response.body;
+        return jsonDecode(response.body);
       }
       return Future.error('Server Error\n${response.body}');
+    } catch (e) {
+      log('$e');
+      return e;
+    }
+  }
+
+  Future getUser(String userToken) async {
+    try {
+      var response = await http.get(
+        Uri.parse('${baseUrl}returnUser'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $userToken'
+        },
+      );
+      log('${response.body} . ${response.statusCode}');
+      if (response.statusCode == 200) {
+        log('${jsonDecode(response.body)}');
+        return jsonDecode(response.body);
+      }
     } catch (e) {
       log('$e');
       return e;
