@@ -111,7 +111,7 @@ class _SecurityQuestionState extends State<SecurityQuestion> {
                 style: const TextStyle(fontSize: 15),
               ),
               const SizedBox(height: 20),
-              textField1(answerController, 'Answer', TextInputType.text, false),
+              textField1(answerController, 'Answer', TextInputType.text),
               const SizedBox(height: 20),
               mainButton(
                 'Set Security',

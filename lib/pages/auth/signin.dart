@@ -43,14 +43,12 @@ class _SignInPageState extends State<SignInPage> {
               emailController,
               'Email',
               TextInputType.emailAddress,
-              false,
             ),
             const SizedBox(height: 20),
-            textField1(
-              passwordController,
-              'Password',
-              TextInputType.visiblePassword,
-              true,
+            PasswordTextField(
+              textEditingController: passwordController,
+              display: 'Password',
+              keyboard: TextInputType.visiblePassword,
             ),
             const SizedBox(height: 20),
             mainButton('Sign In', context, signIn),
