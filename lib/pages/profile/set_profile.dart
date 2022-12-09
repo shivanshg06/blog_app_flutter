@@ -1,5 +1,3 @@
-
-
 import 'package:blog_app_flutter/pages/home.dart';
 import 'package:blog_app_flutter/widgets/styles/app_bars.dart';
 import 'package:blog_app_flutter/widgets/buttons.dart';
@@ -18,11 +16,13 @@ class _SetprofileState extends State<Setprofile> {
     return Scaffold(
       appBar: hiddenAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            mainButton('Set Later', context, setLater),
-            
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          child: Column(
+            children: [
+              mainButton('Set Later', context, setLater),
+            ],
+          ),
         ),
       ),
     );

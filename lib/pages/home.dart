@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       body: FutureBuilder(
         future: _blogHelper.index(),
         builder: (context, snapshot) {
-          log('${snapshot.connectionState} . ${snapshot.data}');
+          log('${snapshot.connectionState}');
           if (snapshot.hasData) {
             return ListView.builder(
               itemCount: snapshot.data!.length,
